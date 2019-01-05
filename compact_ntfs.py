@@ -1,15 +1,18 @@
 import os,time,sys,getopt
 
-#useage : python compact_ntfs.py C:\Windows
-
+#compact useage : python compact_ntfs.py -c C:\Windows
+#uncompact usage: python compact_ntfs.py -u C:\Windows
+#ä»¥ä¸‹æ ¼å¼æ–‡ä»¶ä¸å‹ç¼©
 #skip_file_list no need compact type
 skip_file_list = ('.zip', '.rar', '.gif', '.jpg','.jepg','.png', '.msi', '.cab', '.log',
 '.mp3', '.mp4','.mov','.mkv', '.swf', '.pdf')
 
-#²»Ğè°üº¬ÒÔÏÂ¹Ø¼ü×Ö£¬µÄÄ¿Â¼ÉÏ×öÑ¹Ëõ±ê¼Ç£¬µ«Ä¿Â¼ÏÂµÄÎÄ¼şÒÀÈ»»á½øĞĞ·ÖÎöÑ¹Ëõ
+#ä¸éœ€åŒ…å«ä»¥ä¸‹å…³é”®å­—ï¼Œçš„ç›®å½•ä¸Šåšå‹ç¼©æ ‡è®°ï¼Œä½†ç›®å½•ä¸‹çš„æ–‡ä»¶ä¾ç„¶ä¼šè¿›è¡Œåˆ†æå‹ç¼©
+#folder have those strings will not mark as compact, but still analyze the file under them
 skip_dir_list = ('.git', 'logs', 'cache', 'boot' , 'images','recent')
 
-#ÍêÈ«ºöÂÔµÄÎÄ¼ş¼Ğ£¬²»¶ÁÈ¡ÀïÃæµÄÎÄ¼ş
+#å®Œå…¨å¿½ç•¥çš„æ–‡ä»¶å¤¹ï¼Œä¸è¯»å–é‡Œé¢çš„æ–‡ä»¶
+#all file under those folder (exact match name) will totally gnore
 just_ignore_dir =  ('appdata','documents','manifests','h1','h2')
 file_size = 5000
 
